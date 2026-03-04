@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Memorandum — Yuno / MAS Inspection</title>
+<style>
+  :root {
+    --navy: #0f2644;
+    --blue: #1a4a8a;
+    --accent: #2563eb;
+    --red: #dc2626;
+    --yellow: #d97706;
+    --green: #16a34a;
+    --gray: #6b7280;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #f1f5f9; color: #1e293b; }
+
+  .topbar {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+  }
+  .topbar span { color: #fbbf24; margin: 0 12px; }
+
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: #fff;
+    padding: 40px 60px 30px;
+  }
+  .header-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #93c5fd;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  header h1 { font-size: 26px; font-weight: normal; line-height: 1.3; margin-bottom: 6px; }
+  header h2 { font-size: 14px; font-weight: normal; color: #bfdbfe; margin-bottom: 24px; }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  .meta-grid div strong { display: block; color: #93c5fd; font-size: 10px; letter-spacing: 1px; margin-bottom: 3px; }
+
+  .layout { display: flex; max-width: 1200px; margin: 0 auto; padding: 30px 20px; gap: 24px; }
+
+  .sidebar { width: 240px; flex-shrink: 0; }
+  .sidebar-inner {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 20px;
+  }
+  .sidebar h3 {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+    text-transform: uppercase;
+    padding: 0 20px 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 7px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #475569;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: all 0.15s;
+  }
+  .sidebar a:hover, .sidebar a.active { background: #eff6ff; color: var(--accent); border-right: 3px solid var(--accent); }
+  .sidebar a.sub { padding-left: 32px; font-size: 11px; color: #94a3b8; }
+
+  .main { flex: 1; min-width: 0; }
+
+  .section {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+    margin-bottom: 20px;
+  }
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section h2 { font-size: 20px; color: var(--navy); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+  .section h3 { font-size: 15px; color: var(--blue); margin: 24px 0 10px; }
+  .section h4 { font-family: Arial, sans-serif; font-size: 13px; color: #374151; margin: 18px 0 8px; font-weight: 600; }
+  .section p { font-size: 14px; line-height: 1.8; color: #374151; margin-bottom: 12px; }
+
+  .exec-box {
+    background: #eff6ff;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .exec-box p { font-size: 14px; line-height: 1.8; margin: 0 0 10px; }
+  .exec-box p:last-child { margin: 0; }
+
+  .risk-box { border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.6; }
+  .risk-alto { background: #fef2f2; border: 1px solid #fca5a5; }
+  .risk-medio { background: #fffbeb; border: 1px solid #fcd34d; }
+  .risk-bajo { background: #f0fdf4; border: 1px solid #86efac; }
+  .risk-box strong { display: block; margin-bottom: 4px; }
+  .risk-alto strong { color: var(--red); }
+  .risk-medio strong { color: var(--yellow); }
+  .risk-bajo strong { color: var(--green); }
+
+  .critical-box { background: #fff7ed; border: 2px solid #f97316; border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+  .critical-box .tag { font-family: Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #ea580c; text-transform: uppercase; margin-bottom: 6px; }
+  .critical-box p { font-size: 14px; line-height: 1.7; margin-top: 6px; color: #374151; }
+
+  .arg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .arg-card { border-radius: 8px; padding: 16px; }
+  .arg-pro { background: #f0fdf4; border: 1px solid #86efac; }
+  .arg-con { background: #fef2f2; border: 1px solid #fca5a5; }
+  .arg-card h5 { font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .arg-pro h5 { color: var(--green); }
+  .arg-con h5 { color: var(--red); }
+  .arg-card ol { padding-left: 16px; }
+  .arg-card li { font-size: 13px; line-height: 1.6; margin-bottom: 8px; color: #374151; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: Arial, sans-serif; font-size: 13px; }
+  th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: left; font-size: 11px; letter-spacing: 0.5px; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; font-family: Arial, sans-serif; }
+  .badge-alto { background: #fee2e2; color: var(--red); }
+  .badge-muyalto { background: #fecaca; color: #991b1b; }
+  .badge-medio { background: #fef3c7; color: #92400e; }
+  .badge-bajo { background: #dcfce7; color: #166534; }
+
+  .rec-list { list-style: none; padding: 0; margin: 12px 0; }
+  .rec-list li { font-size: 13px; line-height: 1.7; padding: 8px 12px 8px 36px; position: relative; border-bottom: 1px solid var(--border); color: #374151; }
+  .rec-list li:before { content: attr(data-n); position: absolute; left: 8px; top: 8px; background: var(--accent); color: #fff; width: 20px; height: 20px; border-radius: 50%; font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+  footer { background: var(--navy); color: #94a3b8; text-align: center; padding: 24px; font-family: Arial, sans-serif; font-size: 11px; line-height: 1.8; margin-top: 10px; }
+  footer strong { color: #fff; }
+
+  @media (max-width: 768px) {
+    header { padding: 24px 20px; }
+    .meta-grid { grid-template-columns: 1fr 1fr; }
+    .layout { flex-direction: column; padding: 16px; }
+    .sidebar { width: 100%; }
+    .sidebar-inner { position: static; }
+    .section { padding: 24px 20px; }
+    .arg-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  ⚠ CONFIDENTIAL<span>|</span>ATTORNEY-CLIENT PRIVILEGE<span>|</span>DO NOT DISTRIBUTE WITHOUT AUTHORIZATION
+</div>
+
+<header>
+  <div class="header-label">Legal Memorandum — Privileged Communication</div>
+  <h1>Yuno Payment Orchestration: Regulatory Analysis<br>MAS On-Site Inspection — Payment Services Act 2019</h1>
+  <h2>Singapore · Prepared by Internal Legal Counsel</h2>
+  <div class="meta-grid">
+    <div><strong>To</strong>Yuno Executive Team</div>
+    <div><strong>Date</strong>March 4, 2026</div>
+    <div><strong>Classification</strong>Confidential</div>
+    <div><strong>MAS Inspection</strong>In 10 days</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <h3>Contents</h3>
+      <a href="#s0">Executive Summary</a>
+      <a href="#s1">I. Background</a>
+      <a href="#s2">II. PSA 2019 License</a>
+      <a class="sub" href="#s2a">→ Merchant Acquisition</a>
+      <a class="sub" href="#s2b">→ E-Money Issuance</a>
+      <a class="sub" href="#s2c">→ Cross-Border Risk</a>
+      <a class="sub" href="#s2d">→ Consequences</a>
+      <a class="sub" href="#s2e">→ Recommendations</a>
+      <a href="#s3">III. KYC/AML Obligations</a>
+      <a class="sub" href="#s3a">→ PSN01 Framework</a>
+      <a class="sub" href="#s3b">→ Model Failures</a>
+      <a class="sub" href="#s3c">→ Cross-Border Dimension</a>
+      <a class="sub" href="#s3d">→ Recommendations</a>
+      <a href="#s4">⚠ Hidden Critical Risk</a>
+      <a href="#s5">IV. Inspection Strategy</a>
+      <a href="#s6">V. Conclusions</a>
+      <a href="#s7">CEO/CFO Summary</a>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="section" id="s0">
+      <div class="section-label">Introductory Section</div>
+      <h2>Executive Summary for Leadership</h2>
+      <div class="exec-box">
+        <p>Yuno faces an on-site inspection by the Monetary Authority of Singapore (MAS) raising two high-materiality regulatory questions: (1) whether the payment orchestration model requires a <strong>Major Payment Institution (MPI) license</strong> under the Payment Services Act 2019 (PSA); and (2) whether Yuno has <strong>independent KYC/AML obligations</strong> with respect to the merchants it onboards.</p>
+        <p>Yuno's model has defensible arguments to sustain that its role is technological, not financial — it does not touch funds, does not settle, and does not assume credit risk. However, the regulation does not explicitly address orchestrators, and MAS may adopt an expansive interpretation.</p>
+        <p>There is also a <strong>critical risk not initially identified</strong>: licensed PSPs in Singapore operating through Yuno could face direct MAS pressure to suspend their relationship with Yuno under threat of sanctions against themselves — effectively halting Yuno's Singapore operations without any formal action against Yuno directly.</p>
+      </div>
+      <div class="risk-box risk-alto">
+        <strong>⚠ Overall Risk Assessment: HIGH</strong>
+        An adverse determination in Singapore could trigger regulatory reviews in the Philippines, Thailand, and Indonesia. Immediate action is required on three fronts.
+      </div>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="section" id="s1">
+      <div class="section-label">Section I</div>
+      <h2>Background and Context — Yuno's Business Model</h2>
+      <p>Yuno is a payment orchestration platform acting as a technology intermediary between online merchants and multiple licensed PSPs. Merchants integrate Yuno's API once, and Yuno intelligently routes each transaction to the optimal PSP based on cost, approval rate, and payment method availability.</p>
+      <h3>Transaction Flow</h3>
+      <table>
+        <tr><th>#</th><th>Step</th><th>Actor</th><th>Does Yuno intervene?</th></tr>
+        <tr><td>1</td><td>Merchant initiates transaction</td><td>Merchant</td><td>Yes — receives instruction</td></tr>
+        <tr><td>2</td><td>Optimal PSP selection</td><td>Yuno</td><td>Yes — data only, no funds</td></tr>
+        <tr><td>3</td><td>Authorization, clearing, settlement</td><td>PSP</td><td>No</td></tr>
+        <tr><td>4</td><td>Funds to merchant</td><td>PSP → Merchant</td><td>No</td></tr>
+      </table>
+      <h3>Singapore Operational Data</h3>
+      <table>
+        <tr><th>Indicator</th><th>Data</th></tr>
+        <tr><td>Enterprise clients in Singapore</td><td>8 merchants</td></tr>
+        <tr><td>Annual transaction volume</td><td>SGD 120M (~SGD 10M/month)</td></tr>
+        <tr><td>Physical presence</td><td>None — remote operations from LATAM HQ</td></tr>
+        <tr><td>Active MAS license</td><td>None</td></tr>
+        <tr><td>Revenue model</td><td>SaaS fee + per-transaction routing fee</td></tr>
+      </table>
+      <div class="critical-box">
+        <div class="tag">⚡ Critical Data Point</div>
+        <p>At SGD 10M monthly volume, Yuno exceeds the SGD 3M/month threshold that separates a Standard Payment Institution (SPI) from a Major Payment Institution (MPI). If any regulated activity applies, the required license would be the most operationally and capital-intensive tier.</p>
+      </div>
+    </div>
+
+    <!-- ISSUE 1: LICENSE -->
+    <div class="section" id="s2">
+      <div class="section-label">Section II — Core Issue</div>
+      <h2>Does Yuno Require a License Under the PSA 2019?</h2>
+      <p>The PSA establishes a modular licensing regime for seven categories of regulated payment services. MAS has flagged two specific categories for Yuno: (A) merchant acquisition services and (B) e-money issuance. Each is analyzed below, along with an additional risk not raised by MAS.</p>
+    </div>
+
+    <div class="section" id="s2a">
+      <div class="section-label">Section II · A</div>
+      <h2>Merchant Acquisition Services — Gray Area</h2>
+      <p>The PSA defines merchant acquisition services (First Schedule, Part 1, Activity D) as a service where the provider enters into a contract with a merchant to <strong>accept and process payment transactions, resulting in a transfer of money to the merchant, regardless of whether the service provider comes into possession of the money.</strong></p>
+      <p>The MAS Guidelines PS-G01 (January 2025) clarify that this activity covers services where the provider "processes payment transactions from the merchant and processes payment receipts on behalf of the merchant," typically including POS terminals or online payment gateways.</p>
+
+      <h3>Arguments Analysis</h3>
+      <div class="arg-grid">
+        <div class="arg-card arg-pro">
+          <h5>✓ Yuno's Arguments (does not apply)</h5>
+          <ol>
+            <li><strong>No acquisition contract.</strong> Yuno's agreement is a technology services agreement, not an acquiring contract. The actual acquiring contracts exist between each merchant and each downstream PSP.</li>
+            <li><strong>No settlement function.</strong> Funds flow exclusively PSP→Merchant. Yuno does not appear at any point in the monetary flow.</li>
+            <li><strong>No credit risk assumption.</strong> Chargeback risk and card network liability fall entirely on the PSPs.</li>
+            <li><strong>Technology provider exclusion.</strong> MAS FAQs (April 2024) explicitly exclude "technical service providers that support the provision of any payment service but do not enter into possession of money under that payment service."</li>
+            <li><strong>Industry analogy.</strong> Orchestrators like Spreedly and Gr4vy operate in common law jurisdictions as software providers, not acquirers.</li>
+          </ol>
+        </div>
+        <div class="arg-card arg-con">
+          <h5>✗ MAS Arguments (does apply)</h5>
+          <ol>
+            <li><strong>Non-possession clause.</strong> The definition expressly includes providers who do not "come into possession of the money" — arguably designed to capture intermediaries like orchestrators.</li>
+            <li><strong>Direct contract.</strong> Yuno does enter into a contract with the merchant and "provides payment services" in a broad sense — orchestration is indispensable for the payment to occur.</li>
+            <li><strong>Functional role.</strong> Yuno is the single integration point. From the merchant's perspective, Yuno is the entity that "enables" payments.</li>
+            <li><strong>Regional precedent.</strong> MAS cited an enforcement action against an orchestrator in the region, suggesting a more aggressive internal position on this model.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="risk-box risk-medio">
+        <strong>🔶 Assessment: HIGH-RISK GRAY AREA</strong>
+        The technology provider exclusion in the 2024 FAQs is Yuno's strongest argument, but it does not carry the force of law — it is non-binding guidance. The "regardless of possession" clause is genuinely ambiguous. It is not advisable to rely solely on a favorable textual interpretation.
+      </div>
+    </div>
+
+    <div class="section" id="s2b">
+      <div class="section-label">Section II · B</div>
+      <h2>E-Money Issuance — Strong Position</h2>
+      <p>The PSA defines e-money issuance as the issuance of electronically stored monetary value, denominated in or pegged to a currency, paid in advance, accepted by persons other than the issuer, and representing a claim against the issuer.</p>
+      <div class="risk-box risk-bajo">
+        <strong>✓ Assessment: DOES NOT APPLY — Strong position</strong>
+        Yuno does not issue e-money. No monetary value is stored in Yuno's systems. There is no prepaid balance. Merchants do not deposit funds with Yuno. The routing instruction transmitted by Yuno does not constitute issuance of stored value. This is Yuno's strongest argument and should be communicated clearly with supporting technical documentation at the inspection.
+      </div>
+      <div class="risk-box risk-medio">
+        <strong>⚠ Residual future risk</strong>
+        If Yuno were to implement prepaid features, cashback, or merchant wallets, this category would become immediately relevant. It is recommended to formally document that no current Yuno functionality involves value storage.
+      </div>
+    </div>
+
+    <div class="section" id="s2c">
+      <div class="section-label">Section II · C — Unidentified Risk</div>
+      <h2>Emerging Risk: Cross-Border Money Transfer</h2>
+      <div class="critical-box">
+        <div class="tag">🚨 Critical Risk Not Identified by the GC</div>
+        <p>Amendments to the PSA effective <strong>April 4, 2024</strong> expanded the definition of "cross-border money transfer service" to include those who, from Singapore, facilitate cross-border transfers between entities in different countries, even where money is not accepted or received in Singapore (Payment Services Amendment Act 2021, effective April 4, 2024).</p>
+        <p>Given that Yuno routes payment instructions for transactions involving merchants in Singapore with customers abroad, and operates from outside Singapore toward clients in Singapore, there is a plausible argument that Yuno "facilitates" cross-border transfers within the expanded definition. This risk warrants urgent and separate legal analysis.</p>
+      </div>
+    </div>
+
+    <div class="section" id="s2d">
+      <div class="section-label">Section II · D</div>
+      <h2>Consequences of Operating Without a License</h2>
+      <table>
+        <tr><th>Consequence</th><th>Legal Basis</th><th>Magnitude</th></tr>
+        <tr><td>Fine per offence</td><td>Section 5(1) PSA</td><td>Up to SGD 125,000 per offence</td></tr>
+        <tr><td>Fine for continuing offence</td><td>Section 5(1) PSA</td><td>Up to SGD 12,500 per day</td></tr>
+        <tr><td>Imprisonment (aggravated cases)</td><td>Section 5(1) PSA</td><td>Up to 3 years</td></tr>
+        <tr><td>Cease and desist order</td><td>MAS enforcement powers</td><td>Operations halted</td></tr>
+        <tr><td>APAC regional precedent</td><td>Strategic risk</td><td>Philippines, Thailand, Indonesia</td></tr>
+      </table>
+    </div>
+
+    <div class="section" id="s2e">
+      <div class="section-label">Section II · E</div>
+      <h2>Practical Recommendations — Licensing</h2>
+      <h3>Before the inspection (next 10 days)</h3>
+      <ul class="rec-list">
+        <li data-n="1">Prepare a technical diagram of the <em>data flow</em> (not fund flow) of a typical transaction, demonstrating that Yuno only transmits routing instructions and never touches monetary value. This document should be the centerpiece of the MAS presentation.</li>
+        <li data-n="2">Document the contractual distinction: Yuno agreement = technology services; PSP agreements = acquiring. Compile standard form contracts from downstream PSPs.</li>
+        <li data-n="3">Prepare a written response to MAS's concern about "merchant acquisition," citing the technology provider exclusion from the April 2024 MAS FAQs.</li>
+      </ul>
+      <h3>Medium term</h3>
+      <ul class="rec-list">
+        <li data-n="4">Request an informal consultation meeting with MAS to present the model before or during the inspection. Do not wait for MAS to issue an adverse determination.</li>
+        <li data-n="5">Evaluate MAS's FinTech Regulatory Sandbox as a pathway to legal certainty while operating. Designed for business models that do not fit cleanly within existing regulation.</li>
+        <li data-n="6">If MAS requires a license: MPI application requires a registered office in Singapore, base capital of SGD 250,000, security deposit, and resident directors. Estimated timeline: 9–18 months.</li>
+      </ul>
+    </div>
+
+    <!-- ISSUE 2: KYC/AML -->
+    <div class="section" id="s3">
+      <div class="section-label">Section III — Core Issue</div>
+      <h2>Independent KYC/AML Obligations</h2>
+      <p>The second issue raised by MAS is whether Yuno has independent KYC/KYB and AML/CFT obligations for the merchants it onboards, or whether it can rely entirely on the downstream PSPs' due diligence.</p>
+    </div>
+
+    <div class="section" id="s3a">
+      <div class="section-label">Section III · A</div>
+      <h2>Regulatory Framework: MAS Notice PSN01</h2>
+      <p>AML/CFT obligations for payment service providers in Singapore are set out in <strong>MAS Notice PSN01 on Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services</strong> (latest version: April 2, 2024, amended effective July 1, 2025). PSN01 formally applies to entities licensed as MPI or SPI under the PSA.</p>
+      <div class="critical-box">
+        <div class="tag">⚡ Recent Enforcement Signal</div>
+        <p>In June 2025, MAS imposed composition penalties totaling <strong>SGD 960,000</strong> on five licensed MPIs providing cross-border money transfer services, for breaches of PSN01. This was the first publicly reported instance of MAS enforcing penalties specifically on payment service providers under the PSA for AML/CFT breaches. If MAS imposes such sanctions on licensed entities, the scrutiny toward an unlicensed operator would be considerably higher. <em>(Bird &amp; Bird, "Payment service providers under the radar," June 27, 2025)</em></p>
+      </div>
+    </div>
+
+    <div class="section" id="s3b">
+      <div class="section-label">Section III · B</div>
+      <h2>Three Structural Failures of Yuno's Current Model</h2>
+      <h3>Failure 1: The circular argument</h3>
+      <p>If MAS determines that Yuno <em>should</em> hold a license, PSN01 compliance obligations follow by definition. Yuno cannot use the absence of a license as a shield against AML obligations when the very regulatory risk in dispute is whether a license should be held. MAS will reject this argument.</p>
+      <h3>Failure 2: The unregulated facilitator risk</h3>
+      <p>MAS has shown interest in closing gaps where unregulated facilitators may be used to circumvent controls. In March 2024, MAS proposed a notice for Organised Market Operators requiring AML/CFT for non-financial participants — a clear signal of the regulatory direction toward all links in the payments chain.</p>
+      <h3>Failure 3: The agent risk for PSPs</h3>
+      <p>Under <strong>Section 18(1) of the PSA</strong>, a licensee cannot provide payment services in Singapore through an unlicensed agent. If PSPs use Yuno as their merchant onboarding point, it could be argued that Yuno is acting as an unlicensed agent — a potential violation for both Yuno and the PSPs.</p>
+
+      <h3>Assessment of Current Practices</h3>
+      <table>
+        <tr><th>Current Practice</th><th>Assessment</th><th>Risk</th></tr>
+        <tr><td>Collection of business registration info</td><td>Insufficient for regulatory KYB</td><td><span class="badge badge-alto">High</span></td></tr>
+        <tr><td>Forwarding documentation to PSPs</td><td>Does not constitute independent due diligence</td><td><span class="badge badge-alto">High</span></td></tr>
+        <tr><td>Industry exclusion blocklist</td><td>Useful but not equivalent to AML screening</td><td><span class="badge badge-medio">Medium</span></td></tr>
+        <tr><td>Transaction monitoring</td><td><strong>Absent</strong></td><td><span class="badge badge-alto">High</span></td></tr>
+        <tr><td>Sanctions screening (OFAC, UN, MAS)</td><td><strong>Absent</strong></td><td><span class="badge badge-muyalto">Very High</span></td></tr>
+        <tr><td>Ultimate Beneficial Owner (UBO) identification</td><td><strong>Absent</strong></td><td><span class="badge badge-alto">High</span></td></tr>
+      </table>
+    </div>
+
+    <div class="section" id="s3c">
+      <div class="section-label">Section III · C</div>
+      <h2>The Cross-Border Dimension</h2>
+      <p>Yuno operates from Latin America without physical presence in Singapore. This creates two critical regulatory implications:</p>
+      <h3>1. MAS jurisdictional reach</h3>
+      <p>The PSA applies to entities that "carry on a business of providing a payment service in Singapore." MAS interprets this criterion functionally, not territorially. If Yuno actively solicits clients in Singapore, receives remuneration for services to Singapore merchants, and its platform is the integration point for Singapore consumer payments, MAS may conclude that Yuno "carries on business in Singapore." The absence of a local office is mitigating, but not determinative.</p>
+      <h3>2. MAS's practical enforcement capacity</h3>
+      <p>While direct enforcement against foreign entities is complex, MAS can: (a) block access to the Singapore market, (b) alert licensed local PSPs to suspend their relationship with Yuno under threat of sanctions against themselves, and (c) coordinate with regulators in Yuno's operating countries via memoranda of understanding. The most immediate and effective threat is (b).</p>
+    </div>
+
+    <div class="section" id="s3d">
+      <div class="section-label">Section III · D</div>
+      <h2>Practical Recommendations — KYC/AML</h2>
+      <h3>Immediate implementations (before the inspection)</h3>
+      <ul class="rec-list">
+        <li data-n="1"><strong>Independent sanctions screening.</strong> Implement screening of current and new merchants against: Consolidated UN Security Council Sanctions List, OFAC SDN List, MAS Designated Entities. Implementable within days via APIs from Refinitiv, Dow Jones Risk &amp; Compliance, or similar. Low cost, very high regulatory signal value.</li>
+        <li data-n="2"><strong>Enhanced KYB documentation.</strong> Raise the standard to include: (a) Ultimate Beneficial Owner (UBO) information up to 25% ownership threshold, (b) source of funds declaration for high-volume merchants, (c) verifiable business nature declarations.</li>
+        <li data-n="3"><strong>Documented internal AML/CFT policy.</strong> Draft and implement a preliminary internal policy. MAS values evidence of a compliance culture even if implementation is in progress.</li>
+        <li data-n="4"><strong>Basic transaction monitoring.</strong> Implement automated alerts for: unusually high transaction volumes, transactions in high-risk jurisdictions (FATF grey/black lists), patterns inconsistent with the merchant's profile.</li>
+      </ul>
+      <h3>Medium term</h3>
+      <ul class="rec-list">
+        <li data-n="5"><strong>Formalize reliance on third parties.</strong> PSN01 permits reliance on third-party due diligence, but requires the principal to maintain ultimate responsibility and retain documentation. Formalize written agreements with PSPs clearly allocating AML/KYC responsibilities.</li>
+        <li data-n="6"><strong>Local Singapore compliance representative.</strong> Designate an external local compliance officer as MAS's point of contact. Demonstrates willingness to submit to local supervision and may be decisive in shaping MAS's posture.</li>
+      </ul>
+    </div>
+
+    <!-- CRITICAL RISK -->
+    <div class="section" id="s4">
+      <div class="section-label">⚠ Risk Not Identified by the GC</div>
+      <h2>Critical Risk: Section 18 PSA — The Agent Problem</h2>
+      <div class="critical-box">
+        <div class="tag">🚨 Urgent Action Required</div>
+        <p>There is a material risk not mentioned in the initial communication that warrants priority attention: <strong>licensed PSPs in Singapore operating through Yuno</strong> to reach their merchants may be inadvertently in violation of <strong>Section 18(1) of the PSA</strong>, which prohibits licensees from providing payment services through unlicensed agents.</p>
+        <p>If MAS adopts this argument, the most immediate consequence would be that Stripe, Adyen, and local acquirers would face direct MAS pressure to <strong>suspend their integration with Yuno under threat of sanctions against themselves</strong>. This could halt Singapore operations far more quickly than any direct action against Yuno.</p>
+      </div>
+      <h3>Immediate recommended actions</h3>
+      <ul class="rec-list">
+        <li data-n="1">Urgently assess with each PSP's legal team whether the current contractual relationship exposes the PSPs to Section 18(1) risk. This is the greatest short-term operational threat.</li>
+        <li data-n="2">Review whether PSP contracts define Yuno as an "agent" or as an independent technology provider. The contractual distinction is critical.</li>
+        <li data-n="3">Coordinate with PSP legal teams to present a unified position to MAS reinforcing the purely technological nature of the relationship.</li>
+      </ul>
+    </div>
+
+    <!-- STRATEGY -->
+    <div class="section" id="s5">
+      <div class="section-label">Section IV</div>
+      <h2>Strategic Considerations for the MAS Inspection</h2>
+      <h3>Recommended posture before MAS</h3>
+      <table>
+        <tr><th>Principle</th><th>Concrete Action</th></tr>
+        <tr><td>Do not challenge MAS authority</td><td>Affirmatively assert that the model fits the technology provider exclusion under the 2024 FAQs</td></tr>
+        <tr><td>Technical evidence over legal arguments</td><td>Present data flow diagram showing Yuno only transmits instructions, never value</td></tr>
+        <tr><td>Demonstrate voluntary compliance</td><td>Present KYC/AML improvement plan as evidence of good faith, independent of the license question</td></tr>
+        <tr><td>Explore alternative pathways</td><td>MAS FinTech Regulatory Sandbox for models that do not fit cleanly within existing regulation</td></tr>
+      </table>
+      <h3>APAC Regional Implications</h3>
+      <p>An adverse determination in Singapore would create a precedent that regulators in the Philippines (BSP), Thailand (BOT), and Indonesia (BI/OJK) may follow. These jurisdictions have equally broad payment services regulatory frameworks. Singapore strategy must be designed with the regional precedent in mind.</p>
+    </div>
+
+    <!-- CONCLUSIONS -->
+    <div class="section" id="s6">
+      <div class="section-label">Section V</div>
+      <h2>Conclusions — Consolidated Risk Table</h2>
+      <table>
+        <tr><th>Issue</th><th>Assessment</th><th>Risk Level</th></tr>
+        <tr><td>MPI license (merchant acquisition)</td><td>Gray area — defensible arguments but not conclusive</td><td><span class="badge badge-alto">High</span></td></tr>
+        <tr><td>MPI license (e-money)</td><td>Not applicable — strong position</td><td><span class="badge badge-bajo">Low</span></td></tr>
+        <tr><td>MPI license (cross-border)</td><td>Emerging risk — urgent analysis pending</td><td><span class="badge badge-medio">Medium-High</span></td></tr>
+        <tr><td>Independent AML/CFT obligations</td><td>Current practice insufficient if license required</td><td><span class="badge badge-alto">High</span></td></tr>
+        <tr><td>Section 18 PSA risk (agents/PSPs)</td><td>Previously unidentified — requires urgent action</td><td><span class="badge badge-muyalto">Very High</span></td></tr>
+        <tr><td>MAS enforcement on foreign entity</td><td>Indirect but effective via pressure on local PSPs</td><td><span class="badge badge-alto">High</span></td></tr>
+      </table>
+      <div class="exec-box">
+        <p><strong>Final recommendation:</strong> Yuno must not wait for the inspection in a passive posture. It should: (1) strengthen legal arguments on the distinction between technology orchestrator and acquirer; (2) implement minimum AML controls before the inspection to demonstrate good faith; (3) alert its Singapore PSPs to the Section 18 PSA risk; and (4) proactively explore dialogue with MAS before or during the inspection, with willingness to adjust the operating model to achieve regulatory certainty.</p>
+      </div>
+    </div>
+
+    <!-- CEO/CFO SUMMARY -->
+    <div class="section" id="s7">
+      <div class="section-label">Executive Communication</div>
+      <h2>Executive Summary — For CEO and CFO</h2>
+      <div class="exec-box">
+        <p>Yuno faces a Monetary Authority of Singapore (MAS) on-site inspection in 10 days on two issues: whether its payment orchestration model requires a Major Payment Institution license under the Payment Services Act 2019, and whether it has independent KYC/AML obligations for the merchants it onboards. Our assessment indicates that Yuno has defensible arguments to sustain that its role is technological, not financial — it does not touch funds, does not settle, and does not assume credit risk — but the regulation does not explicitly address orchestrators and MAS may adopt an expansive interpretation. More urgently: licensed PSPs in Singapore operating with Yuno could face direct MAS pressure to suspend the relationship, which would halt operations without any formal action against Yuno itself. Immediate action is recommended on three fronts: prepare strong technical-legal arguments for the inspection, implement minimum AML screening controls before the MAS meeting, and alert partner PSPs to the shared regulatory risk. An adverse outcome in Singapore would set a precedent for the Philippines, Thailand, and Indonesia.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <strong>CONFIDENTIAL — Attorney-Client Privilege</strong><br>
+  This memorandum is a privileged communication prepared in anticipation of litigation or regulatory proceedings.<br>
+  It may not be distributed, copied, or shared without the express authorization of Yuno's General Counsel.<br><br>
+  Analysis based on: Payment Services Act 2019 (No. 2 of 2019) · MAS Notice PSN01 (2024) · MAS Guidelines PS-G01 (January 2025) · MAS FAQs on PSA (April 19, 2024) · Payment Services Amendment Act 2021 (effective April 4, 2024)
+</footer>
+
+</body>
+</html>
